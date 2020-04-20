@@ -25,6 +25,7 @@ public class LondonUsersController {
         List<User> users = new ArrayList<>();
 
         UserList londonUsers = UserService.getUserList().nearLondon();
+        logger.info("Returning {} London users", londonUsers.size());
 
         return londonUsers.getUsers();
     }

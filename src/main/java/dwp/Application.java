@@ -1,4 +1,4 @@
-package io.swagger;
+package dwp;
 
 import dwp.model.UserList;
 import dwp.service.UserService;

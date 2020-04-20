@@ -1,6 +1,5 @@
 package io.swagger.configuration;
 
-import io.swagger.BPDTSApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;

@@ -11,7 +11,6 @@ import java.net.UnknownHostException;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
-
     private static final Logger logger = LoggerFactory.getLogger(User.class);
 
     public static final double LONDON_LATITUDE = 51.5074;
@@ -32,6 +31,17 @@ public class User {
 
     private Double latitude;
     private Double longitude;
+
+    public User() {
+    }
+
+    public User(Long id, String firstName, String lastName, double latitude, double longitude) {
+        setId(id);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setLatitude(latitude);
+        setLongitude(longitude);
+    }
 
     public Long getId() {
         return id;
@@ -116,13 +126,4 @@ public class User {
             '}';
     }
 
-    //TODO: Call actual distance calculator instead of using random numbers
-    protected Double milesTo(Double toLLatitude, Double toLongitude) {
-        // for now, produce up to 5x the target distance.
-        // so that we should have a number within 50 about 20% of the time
-        Double distance = Math.random() * 50.0 * 5;
-        return distance;
-
-        // return calcDistance(latitude, longitude, toLLatitude, toLongitude);
-    }
 }

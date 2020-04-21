@@ -1,4 +1,4 @@
-package io.swagger.configuration;
+package dwp.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +15,7 @@ public class HomeController {
 
     @RequestMapping(value = "/")
     public String index() {
-        logger.debug("swagger-ui.html");
-        return "redirect:swagger-ui.html";
+        logger.debug("templates/index.html");
+        return "index";
     }
 }

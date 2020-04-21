@@ -13,11 +13,9 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@EnableSwagger2
-@ComponentScan(basePackages = { "io.swagger", "io.swagger.api" , "io.swagger.configuration", "dwp" })
+@ComponentScan(basePackages = { "io.swagger","io.swagger.configuration", "dwp", "dwp.service" })
 public class Application implements CommandLineRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(Application.class);
@@ -36,11 +34,16 @@ public class Application implements CommandLineRunner {
 
         logger.info("Look at me! I'm running!");
 
-        UserList users = userService.getUserList();
-        UserList londonUsers = users.nearLondon();
+        UserList users = userService.getAllUsersList();
+        UserList usersNearLondon = userService.nearLondon(users);
+        UserList londonUsers = userService.getLondonUsersList();
 
         logger.info("User list has {} users", users.size());
         logger.info("London users: {}", londonUsers.size());
+
+        londonUsers.getUsers().stream().forEach(user -> {
+            logger.info(user.toString());
+        });
     }
 
     public static void main(String[] args) throws Exception {

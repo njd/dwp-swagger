@@ -2,16 +2,19 @@ package dwp.service;
 
 import dwp.geo.Position;
 import net.sf.geographiclib.Geodesic;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
 public class GeoService {
 
     Geodesic geo;
+    private static final Logger logger = LoggerFactory.getLogger(GeoService.class);
 
     public static final double MILES_TO_KM = 1.60934;
-    protected static final double LONDON_LATITUDE = 0.1278;
-    protected static double LONDON_LONGITUDE = 51.5074;
+    protected static final double LONDON_LATITUDE = 51.5074;
+    protected static double LONDON_LONGITUDE = 0.1278;
     public static final Position LONDON = new Position(LONDON_LATITUDE, LONDON_LONGITUDE);
 
     public GeoService() {
@@ -31,6 +34,7 @@ public class GeoService {
 
         double distanceInMiles = kmToMiles(distanceInKm);
 
+        logger.debug("%s to %s is %f miles", from, to, distanceInMiles);
         return distanceInMiles;
     }
 

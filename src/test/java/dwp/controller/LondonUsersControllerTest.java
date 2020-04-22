@@ -1,4 +1,4 @@
-package dwp;
+package dwp.controller;
 
 import org.junit.Before;
 import org.junit.Test;

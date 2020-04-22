@@ -1,4 +1,4 @@
-package dwp;
+package dwp.controller;
 
 import dwp.model.User;
 import dwp.service.UserService;

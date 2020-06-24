@@ -38,7 +38,7 @@ public class LondonUsersRestControllerTest {
 
         mockMvc.perform(get("/api/london/users"))
             .andExpect(status().isOk())
-            .andExpect((content().contentType(MediaType.APPLICATION_JSON_UTF8)))
+            .andExpect((content().contentType(MediaType.APPLICATION_JSON)))
             .andExpect(jsonPath("$", hasSize(expectedCount)));
     }
 
@@ -46,7 +46,7 @@ public class LondonUsersRestControllerTest {
     public void getsParticularLondonUsers() throws Exception {
         mockMvc.perform(get("/api/london/users"))
             .andExpect(status().isOk())
-            .andExpect((content().contentType(MediaType.APPLICATION_JSON_UTF8)))
+            .andExpect((content().contentType(MediaType.APPLICATION_JSON)))
             .andExpect(jsonPath("$[0].email", is("mboam3q@thetimes.co.uk")));
     }
 }
